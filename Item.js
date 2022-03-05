@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 const Item = ({ title, countryOfOrigin, numberOfFans, yearFormed, data, navigation }) => {
 
   // const keys = Object.keys(data)
+  internationalNumberFormat = new Intl.NumberFormat('en-US')
 
   return (
     <TouchableHighlight
@@ -10,10 +11,14 @@ const Item = ({ title, countryOfOrigin, numberOfFans, yearFormed, data, navigati
       onPress={() => navigation.navigate('Details', data)}
     >
       <View>
-        <Text style={styles.title}>{title}</Text>
-        <Text>{countryOfOrigin}</Text>
-        <Text>{numberOfFans}</Text>
-        <Text>{yearFormed}</Text>
+        <View style={styles.container}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.origin}>{countryOfOrigin}</Text>
+        </View>
+        <View style={styles.container}>
+          <Text>{internationalNumberFormat.format(numberOfFans * 1000)}</Text>
+          <Text>{yearFormed}</Text>
+        </View>
       </View>
     </TouchableHighlight>
   )
@@ -28,9 +33,13 @@ const styles = StyleSheet.create({
     borderBottomColor: 'grey'
   },
   title: {
-    fontSize: 32,
+    fontSize: 20,
   },
-  details: {
+  origin: {
+    fontSize: 20,
+    color: '#979797',
+  },
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between'
   }
