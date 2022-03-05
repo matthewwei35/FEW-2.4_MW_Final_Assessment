@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from 'react-native-vector-icons'
 import BandsScreen from './BandsScreen';
 import StatsScreen from './StatsScreen';
+import StylesScreen from './StylesScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,8 @@ export default function App() {
                 iconName = focused ? 'musical-notes' : 'musical-notes-outline';
               } else if (route.name === 'Stats') {
                 iconName = focused ? 'bar-chart' : 'bar-chart-outline';
+              } else if (route.name === 'Styles') {
+                iconName = focused ? 'disc' : 'disc-outline';
               }
         
               // You can return any component that you like here!
@@ -32,6 +35,7 @@ export default function App() {
         >
           <Tab.Screen name="Bands" component={BandsScreen} />
           <Tab.Screen name="Stats" component={StatsScreen} />
+          <Tab.Screen name="Styles" component={StylesScreen}/>
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
