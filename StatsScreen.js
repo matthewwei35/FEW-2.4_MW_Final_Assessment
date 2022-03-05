@@ -26,33 +26,51 @@ const getTotalSpilitBands = (data) => {
   return split.length
 }
 
-function StatsScreen({ navigation, route }) {
+function StatsScreen() {
   return (
-    <View>
-      <Text>Metal Stats</Text>
-      <Text>Count: {getTotalBands(DATA)}</Text>
-      <Text>Fans: {internationalNumberFormat.format(getTotalFanCount(DATA) * 1000)}</Text>
-      <Text>Countries: {getTotalCountryCount(DATA)}</Text>
-      <Text>Active: {getTotalActiveBands(DATA)}</Text>
-      <Text>Split: {getTotalSpilitBands(DATA)}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Metal Stats</Text>
+      <View style={styles.details}>
+        <Text style={styles.label}>Count: </Text>
+        <Text>{getTotalBands(DATA)}</Text>
+      </View>
+      <View style={styles.details}>
+        <Text style={styles.label}>Fans: </Text>
+        <Text>{internationalNumberFormat.format(getTotalFanCount(DATA) * 1000)}</Text>
+      </View>
+      <View style={styles.details}>
+        <Text style={styles.label}>Countries: </Text>
+        <Text>{getTotalCountryCount(DATA)}</Text>
+      </View>
+      <View style={styles.details}>
+        <Text style={styles.label}>Active: </Text>
+        <Text>{getTotalActiveBands(DATA)}</Text>
+      </View>
+      <View style={styles.details}>
+        <Text style={styles.label}>Split: </Text>
+        <Text>{getTotalSpilitBands(DATA)}</Text>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: 'grey'
+  container: {
+    alignItems: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold'
   },
   details: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 });
 

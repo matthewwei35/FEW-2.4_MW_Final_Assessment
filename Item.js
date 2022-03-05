@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, TouchableHighlight } from 'react-native';
 
-const Item = ({ title, countryOfOrigin, numberOfFans, yearFormed, data, navigation }) => {
+const Item = ({ title, countryOfOrigin, numberOfFans, yearFormed, yearSplit, data, navigation }) => {
 
   // const keys = Object.keys(data)
   internationalNumberFormat = new Intl.NumberFormat('en-US')
@@ -12,7 +12,7 @@ const Item = ({ title, countryOfOrigin, numberOfFans, yearFormed, data, navigati
     >
       <View>
         <View style={styles.container}>
-          <Text style={styles.title}>{title}</Text>
+          <Text style={[(yearSplit === '-') ? styles.titleNotSplit : styles.titleSplit]}>{title}</Text>
           <Text style={styles.origin}>{countryOfOrigin}</Text>
         </View>
         <View style={styles.container}>
@@ -32,11 +32,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'grey'
   },
-  title: {
-    fontSize: 20,
+  titleNotSplit: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  titleSplit: {
+    color: '#666',
+    textDecorationLine: 'line-through',
   },
   origin: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#979797',
   },
   container: {

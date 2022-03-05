@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from 'react-native-vector-icons'
@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({ route }) => ({
@@ -27,19 +27,21 @@ export default function App() {
               return <Ionicons name={iconName} size={size} color={color} />;
             },
             tabBarActiveTintColor: 'tomato',
-            tabBarInactiveTintColor: 'gray'
+            tabBarInactiveTintColor: 'gray',
           })}
         >
           <Tab.Screen name="Bands" component={BandsScreen} />
           <Tab.Screen name="Stats" component={StatsScreen} />
         </Tab.Navigator>
       </NavigationContainer>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000',
+    color: '#fff'
   },
 });
