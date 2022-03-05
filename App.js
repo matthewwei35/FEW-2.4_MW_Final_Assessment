@@ -1,11 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import BandsScreen from './BandsScreen';
+import StatsScreen from './StatsScreen';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Bands" component={BandsScreen} />
+          <Tab.Screen name="Stats" component={StatsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </View>
   );
 }
@@ -13,8 +23,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
