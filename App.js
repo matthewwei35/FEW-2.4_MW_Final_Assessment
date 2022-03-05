@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from 'react-native-vector-icons'
 import BandsScreen from './BandsScreen';
 import StatsScreen from './StatsScreen';
 
@@ -11,7 +12,24 @@ export default function App() {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+        
+              if (route.name === 'Bands') {
+                iconName = focused ? 'musical-notes' : 'musical-notes-outline';
+              } else if (route.name === 'Stats') {
+                iconName = focused ? 'bar-chart' : 'bar-chart-outline';
+              }
+        
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'gray'
+          })}
+        >
           <Tab.Screen name="Bands" component={BandsScreen} />
           <Tab.Screen name="Stats" component={StatsScreen} />
         </Tab.Navigator>
